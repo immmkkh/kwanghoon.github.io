@@ -1,0 +1,97 @@
+<a class="btn btn-default" href="/home/list" role="button">돌아가기</a> </br></br>
+
+<div class = "container">
+    <h1><%=@host.title%></h1>
+    이름: <%=@host.name%> </br>
+    
+    나이: <%=@host.age%> </br>
+    
+    성별: 
+    <%if @host.gender == 1%>
+        남자
+    <%else%>
+        여자
+    <%end%> </br>
+    
+    내용: <%=@host.content%>
+    </br>
+    
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+  관심등록하기 
+</button>
+
+<table class="table">
+        <%@join.each do |j|%>
+        
+            <%if j.gender == 1%>
+                <tr class="warning"onClick="location.href='/home/show/<%=j.id%>'">
+            <%else%>
+                <tr class="success">
+            <%end%>
+            
+                <td><%=j.name%></td>
+                <td><%=j.age%>세</td>
+                <td><%=j.title%></td>
+            </tr>
+        </a>
+        <%end%>
+    </table>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Modal title</h4>
+      </div>
+      
+      <div class="modal-body">
+        <form action="/home/write2" method="post">
+      <div class="form-group">
+        <label for="exampleInputEmail1">name</label>
+        <input name ="name" type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+      </div>
+      
+      <div class ="form-group">
+      <label for="exampleInputEmail1">gender</label></br>
+        <label class="radio-inline">
+        <input type="radio" name="gender" id="inlineRadio1" value="1"> 남자
+        </label>
+        <label class="radio-inline">
+        <input type="radio" name="gender" id="inlineRadio1" value="2"> 여자
+        </label>
+        </div>
+      
+      <div class="form-group">
+        <label for="exampleInputEmail1">age</label>
+        <input name ="age" type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+      </div>
+      
+      <div class="form-group">
+        <label for="exampleInputEmail1">title</label>
+        <input name ="title" type="text" class="form-control" id="exampleInputEmail1" placeholder="">
+      </div>
+      
+      <input name = "hostid" type="hidden" id="postnumber" id="exampleInputEmail1" value="<%=@host.id%>"> </input>
+     
+      <button type="submit" class="btn btn-default">Submit</button>
+      </form>
+        
+        
+    
+    
+    
+    
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+
+

@@ -1,0 +1,35 @@
+<a class="btn btn-default" href="/home/new" role="button">인연등록하기</a>
+
+
+
+<div class = "container">
+    
+    <table class="table">
+        <%@host.each do |h|%>
+        
+            <%if h.gender == 1%>
+                <tr class="warning"onClick="location.href='/home/show/<%=h.id%>'">
+            <%else%>
+                <tr class="success">
+            <%end%>
+            
+                <td><%=h.name%></td>
+                <td><%=h.age%>세</td>
+                <td><%=h.title%></td>
+            </tr>
+        </a>
+        <%end%>
+    </table>
+    
+    
+    
+    
+    
+    
+    
+    <form>
+        <div>
+            
+        </div>
+    </form>
+</div>
